@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class CartTest {
@@ -49,6 +51,19 @@ public class CartTest {
         List<Item> expected = new ArrayList<>();
         expected.add(new Item(new Product("GM Cricket Bat"), 1));
         Assertions.assertEquals(expected, cart.getAllItems());
+    }
+
+    @Test
+    public void shouldFindListOfRemovedProductName() {
+        Cart cart = new Cart();
+        cart.addItems(new Item(new Product("Ipad Pro"), 1));
+        cart.addItems(new Item(new Product("GM Cricket Bat"), 1));
+        cart.removeItem(new Item(new Product("Ipad Pro")));
+        List<Item> removedItems = cart.findRemovedItems();
+        List<Item> expected = new ArrayList<>();
+        expected.add(new Item(new Product("Ipad Pro")));
+        Assertions.assertEquals(expected, removedItems);
+        Assertions.assertEquals(List.of("Ipad Pro"), removedItems.stream().map(item -> item.getProduct().getName()).collect(Collectors.toList()));
     }
 
 }

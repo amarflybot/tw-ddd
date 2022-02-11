@@ -24,6 +24,10 @@ public class Item {
         return Objects.equals(product, item.product);
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(product);
