@@ -29,7 +29,7 @@ public class Cart {
         this.removedItems.add(item);
     }
 
-    public List<Item> findRemovedItems() {
+    public List<Item> getRemovedItems() {
         return this.removedItems;
     }
 }
