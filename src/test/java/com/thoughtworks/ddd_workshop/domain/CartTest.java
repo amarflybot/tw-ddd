@@ -65,4 +65,15 @@ public class CartTest {
         Assertions.assertEquals(List.of("Ipad Pro"), removedItems.stream().map(item -> item.getProduct().getName()).collect(Collectors.toList()));
     }
 
+    @Test
+    public void shouldReturnFalseForTwoCartsWithSameItems() {
+        Cart cart1 = new Cart();
+        Cart cart2 = new Cart();
+        Item item1 = new Item(new Product("Ipad"), 1);
+        Item item2 = new  Item(new Product("Ipad"), 1);
+        cart1.addItems(item1);
+        cart2.addItems(item2);
+        Assertions.assertNotEquals(cart1, cart2);
+    }
+
 }
