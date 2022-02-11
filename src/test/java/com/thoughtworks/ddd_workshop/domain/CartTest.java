@@ -46,6 +46,9 @@ public class CartTest {
         Assertions.assertEquals(2, cart.getTotalItemCount());
         cart.removeItem(new Item(new Product("Ipad Pro")));
         Assertions.assertEquals(1, cart.getTotalItemCount());
+        List<Item> expected = new ArrayList<>();
+        expected.add(new Item(new Product("GM Cricket Bat"), 1));
+        Assertions.assertEquals(expected, cart.getAllItems());
     }
 
 }
