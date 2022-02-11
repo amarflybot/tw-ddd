@@ -1,4 +1,4 @@
-package com.example.spring1;
+package com.thoughtworks.ddd_workshop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

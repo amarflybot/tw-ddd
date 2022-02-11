@@ -1,4 +1,4 @@
-package com.example.spring1;
+package com.thoughtworks.ddd_workshop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
