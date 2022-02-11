@@ -12,7 +12,7 @@ public class CartTest {
 
     @Test
     public void shouldAddAnIpadProToTheCart() {
-        Cart cart = new Cart();
+        Cart cart = new Cart("cartId");
         cart.addItems(new Item(new Product("Ipad Pro"), 1));
         List<Item> allItems = cart.getAllItems();
         Assertions.assertEquals(1, allItems.size());
@@ -22,7 +22,7 @@ public class CartTest {
     @Test
     public void shouldAddAnHeroInkPenToTheCart() {
 
-        Cart cart = new Cart();
+        Cart cart = new Cart("cartId");
         cart.addItems(new Item(new Product("Hero Ink Pen"), 1));
         List<Item> allItems = cart.getAllItems();
         Assertions.assertEquals(1, allItems.size());
@@ -34,14 +34,14 @@ public class CartTest {
     @Test
     public void shouldAddTwoGMCricketBatToTheCart() {
 
-        Cart cart = new Cart();
+        Cart cart = new Cart("cartId");
         cart.addItems(new Item(new Product("GM Cricket Bat"), 2));
         Assertions.assertEquals(1, cart.getTotalItemCount());
     }
 
     @Test
     public void shouldRemoveAnIpadProToTheCart() {
-        Cart cart = new Cart();
+        Cart cart = new Cart("cartId");
         cart.addItems(new Item(new Product("Ipad Pro"), 1));
         cart.addItems(new Item(new Product("GM Cricket Bat"), 1));
         Assertions.assertEquals(2, cart.getTotalItemCount());
@@ -54,7 +54,7 @@ public class CartTest {
 
     @Test
     public void shouldFindListOfRemovedProductName() {
-        Cart cart = new Cart();
+        Cart cart = new Cart("cartId");
         cart.addItems(new Item(new Product("Ipad Pro"), 1));
         cart.addItems(new Item(new Product("GM Cricket Bat"), 1));
         cart.removeItem(new Item(new Product("Ipad Pro")));
@@ -67,13 +67,13 @@ public class CartTest {
 
     @Test
     public void shouldReturnFalseForTwoCartsWithSameItems() {
-        Cart cart1 = new Cart();
-        Cart cart2 = new Cart();
+        Cart cart1 = new Cart("cartId1");
+        Cart cart2 = new Cart("cartId2");
         Item item1 = new Item(new Product("Ipad"), 1);
         Item item2 = new  Item(new Product("Ipad"), 1);
         cart1.addItems(item1);
         cart2.addItems(item2);
-        Assertions.assertNotEquals(cart1, cart2);
+        Assertions.assertFalse(cart1.equals(cart2));
     }
 
 }

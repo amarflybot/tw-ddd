@@ -6,8 +6,10 @@ public class Cart {
 
     private final List<Item> items;
     private final List<Item> removedItems;
+    private final String cartId;
 
-    public Cart() {
+    public Cart(String cartId) {
+        this.cartId = cartId;
         this.items = new ArrayList<>();
         this.removedItems = new ArrayList<>();
     }
@@ -31,5 +33,18 @@ public class Cart {
 
     public List<Item> getRemovedItems() {
         return this.removedItems;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cart cart = (Cart) o;
+        return Objects.equals(cartId, cart.cartId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cartId);
     }
 }
